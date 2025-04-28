@@ -17,7 +17,7 @@
 		"type": "RestResource",
 		"typeProperties": {
 			"relativeUrl": {
-				"value": "@dataset().par_endpoint",
+				"value": "@concat(dataset().par_endpoint, dataset().par_query_parameters)",
 				"type": "Expression"
 			}
 		},
