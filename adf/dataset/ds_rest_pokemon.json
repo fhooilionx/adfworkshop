@@ -8,6 +8,9 @@
 		"parameters": {
 			"par_endpoint": {
 				"type": "string"
+			},
+			"par_query_parameters": {
+				"type": "string"
 			}
 		},
 		"annotations": [],
