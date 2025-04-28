@@ -1,0 +1,27 @@
+{
+	"name": "ds_rest_pokemon",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_rest_pokemon",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"par_endpoint": {
+				"type": "string",
+				"defaultValue": " "
+			},
+			"par_query_parameters": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "RestResource",
+		"typeProperties": {
+			"relativeUrl": {
+				"value": "@concat(dataset().par_endpoint, dataset().par_query_parameters)",
+				"type": "Expression"
+			}
+		},
+		"schema": []
+	}
+}

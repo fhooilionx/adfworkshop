@@ -1,0 +1,11 @@
+{
+	"name": "ls_blob_external",
+	"properties": {
+		"annotations": [],
+		"type": "AzureBlobStorage",
+		"typeProperties": {
+			"serviceEndpoint": "https://ypworkshopexternal.blob.core.windows.net/",
+			"accountKind": "StorageV2"
+		}
+	}
+}

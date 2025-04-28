@@ -1,0 +1,60 @@
+{
+	"name": "pipeline1",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "RestSource",
+						"httpRequestTimeout": "00:01:40",
+						"requestInterval": "00.00:00:00.010",
+						"requestMethod": "GET",
+						"paginationRules": {
+							"QueryParameters.{offset}": "RANGE:1:10:"
+						}
+					},
+					"sink": {
+						"type": "ParquetSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "ParquetWriteSettings"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "ds_rest_pokemon",
+						"type": "DatasetReference",
+						"parameters": {
+							"par_endpoint": "{offset}"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ds_blob_internal",
+						"type": "DatasetReference",
+						"parameters": {
+							"par_filename": "pokemon"
+						}
+					}
+				]
+			}
+		],
+		"annotations": []
+	}
+}
