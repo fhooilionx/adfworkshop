@@ -1,0 +1,11 @@
+{
+	"name": "ls_blob_internal",
+	"properties": {
+		"annotations": [],
+		"type": "AzureBlobStorage",
+		"typeProperties": {
+			"serviceEndpoint": "https://ypworkshopinternal.blob.core.windows.net/",
+			"accountKind": "StorageV2"
+		}
+	}
+}
