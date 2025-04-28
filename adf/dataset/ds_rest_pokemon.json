@@ -5,6 +5,11 @@
 			"referenceName": "ls_rest_pokemon",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"par_endpoint": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "RestResource",
 		"typeProperties": {
