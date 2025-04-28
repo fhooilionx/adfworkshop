@@ -13,7 +13,10 @@
 		"annotations": [],
 		"type": "RestResource",
 		"typeProperties": {
-			"relativeUrl": ""
+			"relativeUrl": {
+				"value": "@dataset().par_endpoint",
+				"type": "Expression"
+			}
 		},
 		"schema": []
 	}
