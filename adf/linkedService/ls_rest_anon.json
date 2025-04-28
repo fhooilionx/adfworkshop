@@ -1,0 +1,17 @@
+{
+	"name": "ls_rest_anon",
+	"properties": {
+		"parameters": {
+			"par_baseurl": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "RestService",
+		"typeProperties": {
+			"url": "@{linkedService().par_baseurl}",
+			"enableServerCertificateValidation": true,
+			"authenticationType": "Anonymous"
+		}
+	}
+}
