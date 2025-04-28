@@ -7,7 +7,8 @@
 		},
 		"parameters": {
 			"par_endpoint": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": " "
 			},
 			"par_query_parameters": {
 				"type": "string"
