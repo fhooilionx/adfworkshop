@@ -1,0 +1,15 @@
+{
+	"name": "ds_rest_pokemon",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_rest_pokemon",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "RestResource",
+		"typeProperties": {
+			"relativeUrl": ""
+		},
+		"schema": []
+	}
+}
