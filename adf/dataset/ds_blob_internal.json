@@ -8,6 +8,9 @@
 		"parameters": {
 			"par_filename": {
 				"type": "string"
+			},
+			"par_user": {
+				"type": "string"
 			}
 		},
 		"annotations": [],
@@ -19,7 +22,10 @@
 					"value": "@concat(dataset().par_filename, '.parquet')",
 					"type": "Expression"
 				},
-				"folderPath": "thijs",
+				"folderPath": {
+					"value": "@dataset().par_user",
+					"type": "Expression"
+				},
 				"container": "extract"
 			},
 			"compressionCodec": "snappy"
