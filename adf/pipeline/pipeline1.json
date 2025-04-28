@@ -24,6 +24,15 @@
 							"QueryParameters.{offset}": "RANGE:1:10:"
 						}
 					},
+					"sink": {
+						"type": "ParquetSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "ParquetWriteSettings"
+						}
+					},
 					"enableStaging": false
 				},
 				"inputs": [
@@ -32,6 +41,15 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"par_endpoint": "{offset}"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ds_blob_internal",
+						"type": "DatasetReference",
+						"parameters": {
+							"par_filename": "pokemon"
 						}
 					}
 				]
