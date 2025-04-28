@@ -15,7 +15,10 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "pokemon.parquet",
+				"fileName": {
+					"value": "@concat(dataset().par_filename, '.parquet')",
+					"type": "Expression"
+				},
 				"folderPath": "thijs",
 				"container": "extract"
 			},
