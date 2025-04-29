@@ -83,7 +83,14 @@
 							"inputs": [
 								{
 									"referenceName": "ds_rest_anon",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"par_baseurl": "https://pokeapi.co/api/v2/pokemon/",
+										"par_endpoint": {
+											"value": "@item().ENDPOINT",
+											"type": "Expression"
+										}
+									}
 								}
 							],
 							"outputs": [
