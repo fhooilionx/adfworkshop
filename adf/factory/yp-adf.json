@@ -1,0 +1,12 @@
+{
+	"name": "yp-adf",
+	"properties": {
+		"globalParameters": {
+			"GP_key_vault_url": {
+				"type": "string",
+				"value": "https://yp-keyvault.vault.azure.net/"
+			}
+		}
+	},
+	"location": "westeurope"
+}
