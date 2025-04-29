@@ -3,64 +3,94 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy data1",
-				"type": "Copy",
-				"dependsOn": [],
-				"policy": {
-					"timeout": "0.12:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"source": {
-						"type": "DelimitedTextSource",
-						"storeSettings": {
-							"type": "AzureBlobStorageReadSettings",
-							"recursive": true,
-							"enablePartitionDiscovery": false
-						},
-						"formatSettings": {
-							"type": "DelimitedTextReadSettings"
-						}
-					},
-					"sink": {
-						"type": "ParquetSink",
-						"storeSettings": {
-							"type": "AzureBlobStorageWriteSettings"
-						},
-						"formatSettings": {
-							"type": "ParquetWriteSettings"
-						}
-					},
-					"enableStaging": false,
-					"translator": {
-						"type": "TabularTranslator",
-						"typeConversion": true,
-						"typeConversionSettings": {
-							"allowDataTruncation": true,
-							"treatBooleanAsNumber": false
-						}
-					}
-				},
-				"inputs": [
+				"name": "ForEach1",
+				"type": "ForEach",
+				"dependsOn": [
 					{
-						"referenceName": "DelimitedText1",
-						"type": "DatasetReference"
+						"activity": "Lookup1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
 					}
 				],
-				"outputs": [
-					{
-						"referenceName": "ds_blob_internal",
-						"type": "DatasetReference",
-						"parameters": {
-							"par_filename": "fake_data.parquet",
-							"par_user": "nils"
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Lookup1').output.value",
+						"type": "Expression"
+					},
+					"activities": [
+						{
+							"name": "copy_fake_data",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "DelimitedTextSource",
+									"storeSettings": {
+										"type": "AzureBlobStorageReadSettings",
+										"recursive": true,
+										"enablePartitionDiscovery": false
+									},
+									"formatSettings": {
+										"type": "DelimitedTextReadSettings"
+									}
+								},
+								"sink": {
+									"type": "ParquetSink",
+									"storeSettings": {
+										"type": "AzureBlobStorageWriteSettings"
+									},
+									"formatSettings": {
+										"type": "ParquetWriteSettings"
+									}
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "fake_data",
+									"type": "DatasetReference",
+									"parameters": {
+										"par_filename": {
+											"value": "@item().ENDPOINT",
+											"type": "Expression"
+										}
+									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "ds_blob_internal",
+									"type": "DatasetReference",
+									"parameters": {
+										"par_filename": {
+											"value": "@item().ENDPOINT",
+											"type": "Expression"
+										},
+										"par_user": "nils"
+									}
+								}
+							]
 						}
-					}
-				]
+					]
+				}
 			},
 			{
 				"name": "Lookup1",
@@ -72,6 +102,21 @@
 					"retryIntervalInSeconds": 30,
 					"secureOutput": false,
 					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SnowflakeV2Source",
+						"query": "SELECT endpoint FROM MA.RTETL.EXTRACT_CONTROL_TABLE WHERE DATASOURCE = 'csv'",
+						"exportSettings": {
+							"type": "SnowflakeExportCopyCommand"
+						}
+					},
+					"dataset": {
+						"referenceName": "ds_snowflake_dwh",
+						"type": "DatasetReference"
+					},
+					"firstRowOnly": false
 				}
 			}
 		],
