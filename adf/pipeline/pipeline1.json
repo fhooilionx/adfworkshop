@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "pokemon_data",
+				"name": "data_import",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
