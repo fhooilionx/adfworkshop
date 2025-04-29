@@ -3,7 +3,8 @@
 	"properties": {
 		"parameters": {
 			"par_baseurl": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "https://pokeapi.co/api/v2/pokemon/"
 			}
 		},
 		"annotations": [],
