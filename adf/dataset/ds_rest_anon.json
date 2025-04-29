@@ -8,6 +8,9 @@
 		"parameters": {
 			"par_baseurl": {
 				"type": "string"
+			},
+			"par_endpoint": {
+				"type": "string"
 			}
 		},
 		"annotations": [],
