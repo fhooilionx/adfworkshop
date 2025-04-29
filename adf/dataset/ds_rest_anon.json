@@ -1,0 +1,17 @@
+{
+	"name": "ds_rest_anon",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_rest_anon",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"par_baseurl": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "RestResource",
+		"schema": []
+	}
+}
