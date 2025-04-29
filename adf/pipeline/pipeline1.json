@@ -92,7 +92,10 @@
 									"referenceName": "ds_rest_anon",
 									"type": "DatasetReference",
 									"parameters": {
-										"par_baseurl": "https://pokeapi.co/api/v2/pokemon/",
+										"par_baseurl": {
+											"value": "@activity('Web1').output.value",
+											"type": "Expression"
+										},
 										"par_endpoint": {
 											"value": "@item().ENDPOINT",
 											"type": "Expression"
@@ -130,9 +133,14 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
+					"method": "GET",
 					"url": {
 						"value": "@concat(pipeline().globalParameters.GP_key_vault_url,'/secrets/', 'etl-pokemon-baseurl','/?api-version=7.0') ",
 						"type": "Expression"
+					},
+					"authentication": {
+						"type": "MSI",
+						"resource": "https://vault.azure.net "
 					}
 				}
 			}
