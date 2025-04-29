@@ -1,0 +1,124 @@
+{
+	"name": "ds_blob",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_blob_external",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"par_filename": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": {
+					"value": "@concat(dataset().par_filename, '.csv')",
+					"type": "Expression"
+				},
+				"container": "extract"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "customer_code",
+				"type": "String"
+			},
+			{
+				"name": "first_name",
+				"type": "String"
+			},
+			{
+				"name": "last_name",
+				"type": "String"
+			},
+			{
+				"name": "email",
+				"type": "String"
+			},
+			{
+				"name": "phone",
+				"type": "String"
+			},
+			{
+				"name": "adress",
+				"type": "String"
+			},
+			{
+				"name": "salon",
+				"type": "String"
+			},
+			{
+				"name": "city",
+				"type": "String"
+			},
+			{
+				"name": "state",
+				"type": "String"
+			},
+			{
+				"name": "zipcode",
+				"type": "String"
+			},
+			{
+				"name": "country",
+				"type": "String"
+			},
+			{
+				"name": "rep_code",
+				"type": "String"
+			},
+			{
+				"name": "rep_first_name",
+				"type": "String"
+			},
+			{
+				"name": "rep_last_name",
+				"type": "String"
+			},
+			{
+				"name": "invoice_ref",
+				"type": "String"
+			},
+			{
+				"name": "invoice_date",
+				"type": "String"
+			},
+			{
+				"name": "item_code",
+				"type": "String"
+			},
+			{
+				"name": "item_desc",
+				"type": "String"
+			},
+			{
+				"name": "item_content",
+				"type": "String"
+			},
+			{
+				"name": "quantity",
+				"type": "String"
+			},
+			{
+				"name": "currency_code",
+				"type": "String"
+			},
+			{
+				"name": "net_sales",
+				"type": "String"
+			},
+			{
+				"name": "gross_sales",
+				"type": "String"
+			}
+		]
+	}
+}
